@@ -1,0 +1,35 @@
+-extends "private_base.haml"
+
+-set title = "Add Credit"
+
+-block js
+  {{ super() }}
+  %script(type="text/javascript", src="https://js.stripe.com/v1/")
+
+-block content
+  #transaction.container
+
+    .row
+      .span12
+        %h1 Add credit
+
+    .row
+      -include "modals/funding_source_create.haml"
+      %form.add-credit(action="#{uri_for('transaction.add_credit')}", \
+                       method="POST")
+        .span6
+          %h4 Funding source
+          -set funding_sources = current_profile.get_funding_sources().fetch(5)
+          -include "components/funding_source_table.haml"
+
+        .span6
+          %h4 Choose an amount
+          .btn-group.amount-choices(data-toggle="buttons-radio")
+            %a.btn.btn-large.active(data-value="10.00") US $10.00
+            %a.btn.btn-large(data-value="20.00") US $20.00
+            %a.btn.btn-large(data-value="50.00") US $50.00
+
+        .span12.form-actions
+          %button(type="submit")
+            %i.icon-check
+            Add credit

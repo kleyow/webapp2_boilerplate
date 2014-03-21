@@ -1,0 +1,35 @@
+-extends "emails/base.html"
+-import "emails/macros.html" as macros
+-set key = current_profile.activation_key
+
+-block title
+  Welcome to Blaze!
+
+-block content
+  %div(style="margin-top: 15px")
+    Thanks for signing up for Blaze, we're still in beta mode but we'll let you know when we launch.
+  %div(style="margin-top: 15px")
+    This e-mail confirms that you've signed up for a Blaze account.
+  %div(style="margin-top: 15px")
+    %b
+      Information about your account:
+    %table
+      %tr
+        %td E-mail address:
+        %td #{current_profile.email}
+      %tr
+        %td Password:
+        %td Posting it here wouldn't be secure, would it?
+
+  %br
+  To activate your account, follow this link:
+
+  -call macros.callout_section()
+    %a.center(href="#{constants.PUBLIC_HOST}#{uri_for('profile.activate', k=key)}")
+      Activate your Blaze account!
+  %p
+    %b
+      Blaze
+    frees you from having to carry cash around, and provides a convenient way to purchase things. Carry out transactions without fear of being robbed, transfer money without long waits at a money transfer service or pay for things at any of our merchant partners.
+
+  -include "emails/components/feedback.haml"

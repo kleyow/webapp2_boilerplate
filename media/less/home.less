@@ -1,0 +1,138 @@
+#home {
+
+  .accordion-group {
+
+    border: none;
+
+    .accordion-heading {
+      padding: 0px;
+
+      .accordion-toggle {
+        background-color: @blazeLightGray;
+        border-radius: 8px;
+        color: white;
+        padding: 0px;
+
+        h4 {
+          padding: 7px 8px 7px 15px;
+        } // h4
+
+        i {
+          color: @blazeBlue;
+        } // i
+
+      } // .accordian-toggle
+
+    } // .accordian-heading
+
+    .accordion-body {
+
+      .accordian-inner {
+        border-top: 0px;
+
+      } // accordian-inner
+
+    } // .accordion-body
+
+  } // .accordion-group
+
+  .completed, .refunded {
+    background-color: #8ed169;
+  } // .completed, .refunded
+
+  .pending {
+    background-color: #90c8f3;
+  } // .pending
+
+  .processing, .refunding  {
+    background-color: #ffc956;
+  } // .processing, .refunding
+
+  .cancelled {
+    background-color: @errorBackground;
+  } // .cancelled
+
+  #usd-balance, #jmd-balance {
+    display: inline;
+    padding-right: 15px;
+
+    .flag {
+      height: 23px;
+      width: 32px;
+    } // .flag
+
+  } // #usd-balance, #jmd-balance
+
+  .amount {
+    color: @white;
+    text-align: right;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    @media(@mobile) {
+      .center;
+    } // @media(@mobile)
+
+  } // .amount
+
+  .button-actions {
+
+    .span2 {
+      .center;
+      background-color: #F05A28;
+
+      img {
+        padding-top: 15px;
+      } // img
+
+      a, h5 {
+        color: @white;
+      } // a, h5
+
+      @media(@mobile) {
+        float: left;
+        margin: 2px;
+        width: 48%;
+      } // @media(@mobile)
+
+    } // .span2
+
+  } // .button-actions
+
+  margin: 1em auto;
+
+  .table-section {
+
+    h3 {
+      .center;
+    } // h3
+
+    @media(@non-mobile) {
+
+      .button-actions {
+        display: none;
+      } // .button-actions
+
+    } // @media(@non-mobile)
+
+    td {
+      .text-center;
+      text-transform: capitalize;
+
+      &.currency {
+        text-transform: uppercase;
+      } // &.currency
+
+    } // td
+
+  } // .table-section
+
+  .welcome {
+
+    @media(@mobile) {
+      .center;
+    } // @media(@mobile)
+
+  } // .welcome
+
+} // #home

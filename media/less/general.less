@@ -1,0 +1,124 @@
+@font-family: 'Lato', Helvetica;
+
+html {
+  margin: 0;
+  background: #252528;
+}
+
+body {
+  position: relative;
+  //background: #DDDCE2 url(/media/body-bg.jpg) repeat left top;
+  -webkit-font-smoothing: antialiased;
+  font-family: @font-family !important;
+  background-color: @blazeGray;
+}
+
+a {
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.add-on {
+  background-color: @blazeGray;
+}
+
+dl, dd, dt {
+  color: @white;
+}
+
+p, ol {
+  color: @white;
+  margin-bottom: 1.7em;
+  font: 13px/1.7em @font-family;
+}
+
+ol li {
+  font: 13px/1.7em @font-family;
+}
+
+input, button, select, textarea {
+  font-family: @font-family;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+form {
+  margin: 0;
+}
+
+.form-actions {
+  background-color: @blazeLightGray;
+  border-top : 0px;
+}
+
+ul {
+  margin-bottom: 1em;
+}
+
+h1, h2, h3 {
+  margin-bottom: .85em;
+}
+
+h3, h4, h5, h6 {
+  margin-bottom: 1.15em;
+
+  &.subtle {
+    color: #888;
+    font-weight: normal;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: @white;
+}
+
+.modal {
+  color: @blazeGray;
+}
+
+.modal-header h3 {
+  color: @blazeGray;
+  margin-bottom: 0;
+}
+
+.modal-body li {
+  margin-bottom: .5em;
+}
+
+.modal-body .control-label {
+  color: @blazeGray;
+}
+
+.btn i {
+  margin-right: 3px;
+}
+
+i.help {
+  margin-left: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #27f;
+}
+
+label {
+  cursor: pointer;
+  color: @white;
+}
+
+table {
+  thead {
+    color: @white;
+  }
+
+  tbody {
+    color: @blazeGray;
+    background-color: @white;
+  }
+
+}

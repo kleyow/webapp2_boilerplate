@@ -1,0 +1,26 @@
+#transactions-received
+  -set transactions = current_profile.get_transactions_received(Transaction.Type.Transfer)
+  -if transactions.count(limit=1)
+    %table.compact-table.table
+      %thead
+        %tr
+          %td Name
+          %td Date
+          %td Amount
+          %td Status
+
+      %tbody
+        -for transaction in transactions.order('-created').fetch(5)
+          %tr(class="#{transaction.status}")
+            %td(data-title="Name")
+              #{transaction.sender.name}
+            %td(data-title="Date")
+              #{transaction.created|format_date()}
+            %td(data-title="Amount")
+              #{transaction.get_transaction_amount()}
+            %td(data-title="Status")
+              #{transaction.status}
+
+  -else
+    .empty
+      %h3 No transactions received.

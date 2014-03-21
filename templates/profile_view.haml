@@ -1,0 +1,47 @@
+-extends "private_base.haml"
+
+-set title = "My Account"
+
+-block js
+  {{ super() }}
+  %script(type="text/javascript", src="https://js.stripe.com/v1/")
+
+-block content
+
+  #profile.container
+    .row: .span12
+      %h2
+        My account
+
+      .profile-detail-heading
+        {{ current_profile.email }}
+
+    .row
+      .span4
+        %h4
+          Basic info
+        -include "components/basic_info_section.haml"
+        %a(href="#{uri_for('profile.update')}") Update your profile
+
+      .span4.offset1
+        .funding-source-section
+          %h4
+            Funding sources
+
+            %a(data-modal="funding_source_create")
+              Add a new funding source
+
+          -set funding_sources = current_profile.get_funding_sources().fetch(5)
+          -include "modals/funding_source_create.haml"
+          -include "components/funding_source_table.haml"
+
+          -if funding_sources:
+            .funding-actions
+              %input(type="hidden", name="funding_source")
+              .btn-group
+                %a.btn
+                  Add $20 USD
+                %a.btn
+                  Add other amount
+                %a.btn.btn-danger
+                  Delete Card

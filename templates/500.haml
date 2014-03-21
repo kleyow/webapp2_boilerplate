@@ -1,0 +1,36 @@
+-extends "public_base.haml"
+
+-set title = "Sorry!"
+
+-block content
+  #500-error.container
+    .row
+      .span6
+        %h3
+          Sorry!
+          %i.icon-frown
+        %p
+          Something went wrong.
+          Our engineers have been notified and are working hard to fix it.
+          You can help us by giving us your name, email address, and
+          a brief description of what exactly you were doing when this
+          happened.
+
+      .span6
+        %h3 Report this error
+        %form#report-error(action="#{uri_for('error.report')}", method="POST")
+          .control-group
+            %label.control-label(for="name") Name
+            .controls: %input#name(type="text", name="name")
+
+          .control-group
+            %label.control-label(for="email") E-mail address
+            .controls: %input#email(type="email", name="email")
+
+          .control-group
+            %label.control-label(for="message") What were you doing?
+            .controls: %textarea#message(name="message")
+
+          .form-actions
+            %button(type="submit")
+              Send error report

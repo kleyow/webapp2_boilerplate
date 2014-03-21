@@ -1,0 +1,44 @@
+-extends "emails/base.html"
+-import "emails/macros.html" as macros
+
+-block title
+  #{email_title}
+
+-block content
+  %h3.email_greeting Hi #{email_recipient},
+  %p.email_message
+    #{email_message}
+
+  -set is_cash_deposit = (\
+    transaction.transaction_type == transaction.Type.Deposit and \
+    not transaction.funding_source)
+  -call macros.transaction_table()
+    %thead
+      %tr
+        -if (transaction.transaction_type == transaction.Type.Transfer or \
+               is_cash_deposit)
+          %td Sender
+        -elif transaction.transaction_type == transaction.Type.Purchase
+          %td Organization
+        %td Receipt Type
+        %td Transaction Date
+        %td Amount
+        %td Status
+    %tbody
+      %tr
+        -if (transaction.transaction_type == transaction.Type.Transfer or \
+               is_cash_deposit)
+          %td.email_name #{transaction.sender.name}
+
+        -elif transaction.transaction_type == transaction.Type.Purchase
+          %td.email_name #{transaction.recipient.name}
+
+        %td.email_type #{transaction.transaction_type}
+        -if transaction.transaction_type == transaction.Type.Purchase
+          %td.email_time {{ transaction.get_sender_time()|format_datetime() }}
+
+        -else
+          %td.email_time {{ transaction.get_recipient_time()|format_datetime() }}
+        %td.email_amount #{transaction.get_transaction_amount()}
+        %td.email_status #{transaction.status}
+  -include "emails/components/feedback.haml"

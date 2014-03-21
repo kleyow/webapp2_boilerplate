@@ -1,0 +1,163 @@
+#about {
+  font-family: 'Roboto' !important;
+  padding-bottom: 2em;
+  padding-top: 2em;
+
+  .text {
+    margin-top: 14%;
+  } // .text
+
+  .what-is {
+    height: 600px;
+
+    @media(@tablet) {
+      height: 400px;
+    } // @media(@tablet)
+
+    @media(max-width: 660px) {
+      height: 400px;
+    } // @media(max-width: 660px)
+
+    h3 {
+      color: #F85D29;
+      font-size: 60px;
+      margin-bottom: 0px;
+    } // h3
+
+    .span5 {
+
+      @media(@non-mobile) {
+        margin-top: 135px;
+      } // @media(@non-mobile)
+
+      @media(@tablet) {
+        margin-top: 10px;
+      } // @media(@tablet)
+
+    } // .span5
+
+    .blaze-device {
+      width: 80%;
+
+      @media(@mobile) {
+        width: 45%;
+        float: left;
+        margin-right: 5px;
+      } // @media(@mobile)
+
+      @media(max-width: 660px) {
+        display: none;
+      } // @media(max-width: 660px)
+
+    } // .blaze-device
+
+    img.logo {
+      margin-bottom: 10px;
+    } // img.logo
+
+    p {
+      font-size: 15px;
+    } // p
+
+    img.logo, p, h3 {
+      @media(max-width: 660px) {
+        .center;
+      } @media(max-width: 660px)
+
+    } // img.logo, p, h3
+
+  } // .what-is
+
+  .parallax {
+    height: 400px;
+    background-repeat: no-repeat;
+
+    h1 {
+     font-size: 60px;
+
+      @media(@mobile) {
+        font-size: 35px;
+      } // @media(@mobile)
+
+    } // h1
+
+    h3 {
+      font-size: 30px;
+
+      @media(@mobile) {
+        font-size: 20px;
+      } // @media(@mobile)
+
+    } // h3
+
+    @media(@mobile) {
+      height: 300px;
+      margin-left: -20px;
+      margin-right: -20px;
+    } // @media(@mobile)
+
+    @media(@small-mobile) {
+      height: 200px;
+    } // @media(@small-mobile)
+
+  } // parallax
+
+  .no-cash {
+    background: url("/media/about-page/no-cash.jpg");
+  } // .no-cash
+
+  .short-on-cash {
+    background: url("/media/about-page/short-on-cash.jpg");
+  } // .short-on-cash
+
+  .blaze-fast {
+    background: url("/media/about-page/blaze-fast.jpg");
+  } // .blaze-fast
+
+  .make-payment, .send-money {
+    padding: 75px 0 75px 0;
+  } // .make-payment, .send-money
+
+  .why-blaze {
+    padding-top: 50px;
+
+    @media(@mobile) {
+      .center;
+    } // @media(@mobile)
+
+    .btn.get-started {
+      .btn;
+      .btn-large;
+      .btn-primary;
+      color: #fff;
+      background: #17ABE9;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 auto;
+      display: inline-block;
+      padding: 17px 39px;
+      border: 0 none;
+      .border-radius(12px);
+      .transition(~"background linear .2s, box-shadow linear .2s");
+
+      &:hover {
+        background: #252528;
+      } // &:hover
+    } // .btn.get-started
+
+    h3 {
+      color: #F85D29;
+      font-size: 60px;
+    } // h3
+
+    p {
+      font-size: 15px;
+    } // p
+
+    img {
+      padding-top: 18px;
+    } // img
+
+  } // .why-blaze
+
+} // #about

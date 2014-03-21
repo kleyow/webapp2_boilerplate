@@ -1,0 +1,7 @@
+#notification-bar
+  -set message, level = session.get_flashes()[0] or (None, None)
+  -if message
+    .alert(class="alert-{{ level or 'info' }}")
+      %a.close(data-dismiss="alert") &times;
+      %div {{ message }}
+

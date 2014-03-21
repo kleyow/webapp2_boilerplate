@@ -1,0 +1,25 @@
+{% extends "emails/base.txt" %}
+{% import "emails/macros.html" as macros %}
+
+{%- set key = current_profile.activation_key -%}
+
+{% block content %}
+  Thanks for signing up for Blaze, we're still in beta mode but we'll let you know when we launch.
+
+  This e-mail confirms that you've signed up for a Blaze account.
+
+  Information about your account
+  E-mail address: {{ current_profile.email }}
+  Password: Posting it here wouldn't be secure, would it?
+
+  To activate your account, follow this link:
+
+  {% call macros.callout_section() %}
+    (href="{{ constants.PUBLIC_HOST }}{{ uri_for('signup', k=key) }}")
+    Activate your Blaze account
+  {% endcall %}
+
+  Blaze frees you from having to carry cash around, and provides a convenient way to purchase things. Carry out transactions without fear of being robbed, transfer money without long waits at a money transfer service or pay for things at any of our merchant.
+
+{% include "emails/components/feedback.txt" %}
+{% endblock %}

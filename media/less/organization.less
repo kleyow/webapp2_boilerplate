@@ -1,0 +1,82 @@
+#organization-view {
+  margin-bottom: 15px;
+
+  .organization-section {
+    margin-top: 15px;
+
+    .edit-button {
+      .btn;
+      .btn-primary;
+      margin-bottom: 5px;
+    } // .edit-button
+
+  } // .organization-section
+
+  .organization-content {
+    margin-top: 5%;
+  } // .organization-content
+
+  .transaction-section {
+
+    h3 {
+      .center;
+    } // h3
+
+    .completed, .refunded {
+      #transaction .completed;
+    } // .completed, .refunded
+
+    .pending {
+      #transaction .pending;
+    } // .pending
+
+    .processing, .refunding  {
+      #transaction .processing;
+    } // .processing, .refunding
+
+    .cancelled {
+      #transaction .cancelled;
+    } // .cancelled
+
+    .status {
+      font-weight: bold;
+    } // .status
+
+    td {
+      .text-center;
+      text-transform: capitalize;
+
+      &.currency {
+        text-transform: uppercase;
+      } // &.currency
+
+    } // td
+
+  } // .transaction-section
+
+  #organization-staff-tab {
+    table {
+      tbody {
+        color: @white;
+        background-color: @blazeGray;
+      } // tbody
+
+    } // table
+
+  } // #organization-staff-tab
+
+} // #organization-view
+
+
+#organization-edit {
+
+  form {
+
+    button[type="submit"] {
+      .btn;
+      .btn-primary;
+    } // .button[type="submit"]
+
+  } // form
+
+} // #organization-edit

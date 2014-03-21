@@ -1,0 +1,10 @@
+{% import "emails/macros.html" as macros %}
+
+{% call macros.section("Questions or concerns?") %}
+We're always looking for feedback, so if you have any ideas for the product,
+let us know at
+<a href="mailto:#{constants.SUPPORT_EMAIL}" style="color: #1155CC;">
+  <strong>#{constants.SUPPORT_EMAIL}</strong>
+</a>!
+{% endcall %}
+

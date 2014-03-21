@@ -1,0 +1,10 @@
+backends:
+- name: mail
+  class: B1
+  options: dynamic
+  instances: 1
+
+- name: transactions
+  class: B1
+  options: dynamic
+  instances: 1

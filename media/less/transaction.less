@@ -1,0 +1,129 @@
+#transaction {
+
+  @media(@mobile) {
+      .center;
+    } // @media(@mobile)
+
+  .transaction-form {
+
+    .amount-choices {
+      .unselectable;
+    } // .amount-choices
+
+    .form-actions {
+      text-align: center;
+
+      button {
+        .btn;
+        .btn-large;
+        .btn-primary;
+
+        padding-left: 3em;
+        padding-right: 3em;
+
+        i {
+          margin-right: 0.5em;
+        } // i
+
+      } // button
+
+    } // .form-actions
+
+  } // .transaction-form
+
+  #status {
+    text-transform: capitalize;
+  } // #status
+
+  form.add-credit {
+    .transaction-form;
+  } // form.add-credit
+
+  form.transfer {
+    .transaction-form;
+  } // form.transfer
+
+  form.purchase {
+    .transaction-form;
+  } // form.purchase
+
+  .important {
+    font-weight: bold;
+  } // .important
+
+  .completed, .refunded {
+    background-color: #8ed169;
+  } // .completed, .refunded
+
+  .pending {
+    background-color: #90c8f3;
+  } // .pending
+
+  .processing, .refunding  {
+    background-color: #ffc956;
+  } // .processing, .refunding
+
+  .cancelled {
+    background-color: @errorBackground;
+  } // .cancelled
+
+  td {
+    .text-center;
+    text-transform: capitalize;
+
+      &.currency {
+        text-transform: uppercase;
+      } // &.currency
+
+  } // td
+
+  .staff-actions {
+
+    .center;
+    .well;
+
+    form {
+      display: inline;
+      margin: 30px;
+
+      button {
+        .btn;
+        .btn-large;
+      } // button
+
+    } // form
+
+    #verify-button {
+      .btn-success;
+    } // #verify-button
+
+    #refund-button {
+      .btn-danger;
+    } // #refund-button
+
+  } // .staff-actions
+
+  .transaction-heading {
+    .center;
+
+    .verified {
+      .alert;
+      .alert-success;
+    } // .verified
+
+  } // .transaction-heading
+
+} // #transaction
+
+#transaction-purchase {
+
+  .organizations {
+
+    li {
+      .center;
+      list-style: none;
+    } // li
+
+  } // .organizations
+
+} // #transaction-purchase

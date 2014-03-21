@@ -1,0 +1,59 @@
+application: blaze-pay
+version: autodeployed
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+builtins:
+- remote_api: on
+- appstats: on
+- deferred: on
+
+inbound_services:
+- mail
+- xmpp_message
+- warmup
+
+libraries:
+- name: jinja2
+  version: "2.6"
+
+- name: webapp2
+  version: latest
+
+- name: pycrypto
+  version: "2.6"
+
+# Defaults as well as ignoring less files (we don't
+# need to serve those in production)
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?.*\.less
+- ^(.*/)?environment/
+
+env_variables:
+  KEEN_PROJECT_ID: 52588a9336bf5a03a6000001
+  KEEN_WRITE_KEY: d59f62fa0a379aafaca5b7e4621410e97b311261b787dcfc9b1b1e35f12595e7fd37e0992a8099cfe4c75f92423579a310f21f03977c32e7d882f59bcc25f24c2701a7201259f1c5e8f0d6bbc10072efe46813befe4eb5cded55f4d1c4461112d8bb740dab5a25d294095fd3b0027fef
+
+handlers:
+- url: /favicon\.png
+  static_files: media/favicon.png
+  upload: media/favicon.png
+
+- url: /media/
+  static_dir: media/
+
+- url: /robots\.txt
+  static_files: robots.txt
+  upload: robots.txt
+
+- url: .*
+  script: main.app

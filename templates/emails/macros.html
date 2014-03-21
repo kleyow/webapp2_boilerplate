@@ -1,0 +1,25 @@
+{% macro section(heading=None) %}
+<div style="padding: 2em 2em; border-top: 1px solid #e1e1e1;">
+  {% if heading %}
+  <p style="margin-top: 0; font-weight: bold;">
+  {{ heading }}
+  </p>
+  {% endif %}
+
+  <p style="margin: 0;">
+  {{ caller() }}
+  </p>
+</div>
+{% endmacro %}
+
+{% macro callout_section() %}
+<div style="font-size: 15px; text-align: center; line-height: 4em; background-color: #eeeeee; border-top: 1px solid #e1e1e1;">
+  {{ caller() }}
+</div>
+{% endmacro %}
+
+{% macro transaction_table() %}
+<table class="transaction" style="width: 100%; text-align:center; text-transform: capitalize;">
+  {{ caller() }}
+</table>
+{% endmacro %}

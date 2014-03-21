@@ -1,0 +1,55 @@
+.navbar.navbar-inverse.navbar-static-top: .navbar-inner: .container
+
+  %a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+    %span.icon-bar
+    %span.icon-bar
+    %span.icon-bar
+
+  %a.brand(href="#{uri_for('home')}")
+    %img#logo(src="/media/logo-small.png")
+
+  .nav-collapse.collapse
+    %ul.nav.pull-right
+      -set active_tab = {request.path: 'active'}
+
+      -if current_profile
+        %li(class="#{active_tab.get(uri_for('home'), '')}")
+          %a(href="#{uri_for('home')}") Home
+
+      -if current_staff
+        %li(class="#{active_tab.get(uri_for('staff.home'), '')}")
+          %a(href="#{uri_for('staff.home')}") Staff Home
+
+        %li(class="#{active_tab.get(uri_for('staff.deposit'), '')}")
+          %a(href="#{uri_for('staff.deposit')}") Sell Credit
+
+      -if current_profile
+        %li(class="#{active_tab.get(uri_for('profile.view'), '')}")
+          %a(href="#{uri_for('profile.view')}") My Profile
+      -else
+        %li(class="#{active_tab.get(uri_for('profile.view'), '')}")
+          %a(href="#{uri_for('profile.view')}") Go to my Profile
+
+      -set organization = current_profile.get_organization()
+      -if organization
+        -set organization_url = uri_for('organization.view', id=organization.key().id())
+        %li(class="#{active_tab.get(organization_url, '')}")
+          %a(href="#{organization_url}") #{organization.name}
+
+      -if current_profile.is_admin
+        %li(class="#{active_tab.get(uri_for('admin.add_organization'), '')}")
+          %a(href="#{uri_for('admin.add_organization')}") Add an Organization
+
+        %li(class="#{active_tab.get(uri_for('admin.deposit'), '')}")
+          %a(href="#{uri_for('admin.deposit')}") Deposit Cash
+
+        %li(class="#{active_tab.get(uri_for('admin.history'), '')}")
+          %a(href="#{uri_for('admin.history')}") Cash Deposit History
+
+      -if current_staff
+        %li(class="#{active_tab.get(uri_for('staff.logout'), '')}")
+          %a(href="#{uri_for('staff.logout')}") Staff Logout
+
+      -if current_profile
+        %li(class="#{active_tab.get(uri_for('logout'), '')}")
+          %a(href="#{uri_for('logout')}") Logout

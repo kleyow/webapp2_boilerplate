@@ -1,0 +1,12 @@
+queue:
+- name: mail
+  rate: 5/s
+  bucket_size: 5
+
+- name: payment
+  rate: 1/s
+  bucket_size: 5
+
+- name: default
+  rate: 5/s
+  bucket_size: 5

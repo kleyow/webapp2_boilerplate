@@ -1,0 +1,13 @@
+-extends "private_base.haml"
+
+-set title = "Add a new funding source"
+
+-block js
+  {{ super() }}
+  %script(type="text/javascript", src="https://js.stripe.com/v1/")
+
+-block content
+  .container: .row
+    .span5
+      %h1 Add a new funding source
+

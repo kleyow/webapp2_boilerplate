@@ -1,0 +1,65 @@
+-extends "public_base.haml"
+
+-set title = "Login"
+
+-block content
+  #login: .container
+    .row
+      .span7
+        %h4 Log in to your account
+
+        .features.clearfix
+          %div
+            .feature
+              %i.icon-fighter-jet
+              %p
+                %strong Send credit
+                to friends and relatives with ease.
+            .feature
+              %i.icon-fighter-jet
+              %p
+                %strong Make purchases
+                at anyone of our participating merchants hassle free.
+            .feature
+              %i.icon-fighter-jet
+              %p
+                %strong Top-Up
+                with any major credit card in seconds and be on your way!
+
+      .span5.login-box
+
+        -if error
+          .login-error
+            %strong Sorry!
+            We didn't recognize that e-mail and password combination.
+            Give it another try
+
+        %form(action="#{uri_for('login')}", method="POST")
+          %input#redirect(type="hidden", name="redirect", \
+                          value="#{request.get('redirect')}")
+
+          %input#email(type="email", name="email", required="required", \
+                       value="#{request.POST.get('email') or ''}", \
+                       placeholder="E-mail address")
+
+          %input#password(type="password", name="password", \
+                          required="required", placeholder="Password", \
+                          autocomplete="off")
+          .signup-link
+            Sign up for Blaze!
+            %a(href="#{uri_for('signup')}") Sign up here.
+
+          .forgot-password-link
+            Forgot your password?
+            %a(href="#{uri_for('forgot-password')}") Recover it here.
+
+          .staff-login-link
+            %a(href="#{uri_for('staff.login')}")
+              Login as staff
+
+          .button-container
+            %button.login(type="submit", data-spinner="Logging in...")
+              %i.icon-lock"
+              &nbsp;
+              Login to Blaze
+

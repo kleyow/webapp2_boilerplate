@@ -1,0 +1,45 @@
+-extends "public_base.haml"
+
+-set title="Update Info"
+
+-block content
+  #update-profile.container
+    .row
+      .offset4.span4
+        %h2.orange
+          %i.icon-fire
+          Update
+
+        %form#update-form(action="#{uri_for('profile.update')}", method="POST")
+
+          .control-group
+            %label.control-label(for="name") Name:
+            .controls
+              %input#name(type="text", name="name", \
+                value="#{request.POST.get('name', current_profile.name)}")
+
+          .control-group
+            %label.control-label(for="email") E-mail address:
+            .controls
+              %input#email(type="email", name="email", \
+                value="#{request.POST.get('email', current_profile.email)}")
+
+          .control-group
+            %label.control-label(for="password") Old Password:
+            .controls
+              %input#old-password(type="password", name="old_password")
+
+          .control-group
+            %label.control-label(for="password") New Password:
+            .controls
+              %input#new-password(type="password", name="new_password")
+
+          .control-group
+            %label.control-label(for="pin") PIN:
+            .controls
+              %input#pin(type="password", name="pin", maxlength="4")
+
+          .form-actions
+            %button(type="submit", data-spinner="Updating...")
+              %i.icon-thumbs-up
+              Update Info

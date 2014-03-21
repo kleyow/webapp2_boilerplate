@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+%title Blaze - #{title or 'Home'}
+%meta(name="viewport", content="width=device-width, initial-scale=1.0")
+%link(rel="shortcut icon", href="/media/favicon.ico", type="image/x-icon")
+%link(rel="apple-touch-icon", href="/media/apple-touch-icon.png")
+%link(rel="apple-touch-icon", sizes="57x57", href="/media/apple-touch-icon-57x57.png")
+%link(rel="apple-touch-icon", sizes="72x72", href="/media/apple-touch-icon-72x72.png")
+%link(rel="apple-touch-icon", sizes="114x114", href="/media/apple-touch-icon-114x114.png")
+%link(rel="apple-touch-icon", sizes="144x144", href="/media/apple-touch-icon-144x144.png")
+
+-block css
+  -if 'less' in request.arguments()
+    %link(rel="stylesheet/less", type="text/css", \
+          href="/media/less/project.less")
+    %script(src="/media/less.js", type="text/javascript")
+  -elif 'css' in request.arguments()
+    %link(rel="stylesheet", href="/media/project.css")
+  -else
+    %link(rel="stylesheet", href="/media/project.min.css")
+
+%body
+  -include "components/notification_bar.haml"
+
+  -block body
+
+  -block js
+    -if 'js' in request.arguments()
+      %script(type="text/javascript", src="/media/date.js")
+      %script(type="text/javascript", src="/media/time.js")
+      %script(type="text/javascript", src="/media/jquery.js")
+      %script(type="text/javascript", src="/media/jquery.touchToClick.js")
+      %script(type="text/javascript", src="/media/jquery.hammer.min.js")
+      %script(type="text/javascript", src="/media/bootstrap.js")
+      %script(type="text/javascript", src="/media/bootstrap-datepicker.js")
+      %script(type="text/javascript", src="/media/bootstrap-daterangepicker.js")
+      %script(type="text/javascript", src="/media/bootstrap-timepicker.js")
+      %script(type="text/javascript", src="/media/jquery.flot.js")
+      %script(type="text/javascript", src="/media/jquery.flot.categories.js")
+      %script(type="text/javascript", src="/media/jquery.flot.resize.js")
+      %script(type="text/javascript", src="/media/application.js")
+    -else
+      %script(type="text/javascript", src="/media/project.min.js")
+
+    ; TODO: Set up Google Analytics.
+    ; -include "components/analytics.html"
+
+  %div.hide
+    -block hidden
+

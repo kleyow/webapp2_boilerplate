@@ -1,0 +1,34 @@
+-extends "private_base.haml"
+
+-set title = "Add Organization"
+
+-block content
+  #add-organization.container
+
+    .row: .span12
+      %h2 Add Organization
+
+    .row: .span12
+      %form#add-organization(action="#{uri_for('admin.add_organization')}", \
+                          method="POST")
+        .control-group
+          %label.control-label(for="owner") Owner's email address:
+          .controls: %input#owner(type="text", name="owner")
+
+          %label.control-label(for="name") Organization Name:
+          .controls: %input#name(type="text", name="name")
+
+          %label.control-label(for="identifier") Organization Identifier:
+          .controls: %input#identifier(type="text", name="identifier")
+
+          %label.control-label(for="fee-percentage") Fee Percentage:
+          .controls
+            %input#fee-percentage(type="number", name="fee_percentage", \
+                                  step="0.01")
+
+          %label.control-label(for="logo_url") Organization Logo:
+          .controls: %input#logo(type="text", name="logo_url")
+        .form-actions
+          %button(type="submit")
+            %i.icon-check
+            Add Organization

@@ -1,0 +1,88 @@
+-extends "public_base.haml"
+
+-set title="Partner Request Form"
+
+-block content
+  #partner
+    %section.what-is.container
+      .row
+        .offset1.span4.center
+          %img.blaze-device(src="/media/partner-page/tablet.png")
+        .span5
+          %h3 What is
+            %img.logo(src="/media/logo-medium.png")
+          %p
+            Blaze wants to change the way you spend money. Blaze is the faster, \
+            safer and smarter way to send and receive money in Jamaica \
+            electronically. With Blaze, you can make purchases at any of our \
+            mechant partners with just the push of a button!
+
+    %section.parallax.convenience(data-offset="-700")
+      .container
+        .row
+          .span6.text
+            %h1 Convenience
+            %h3 for you and your customer.
+    %section.how-it-works.container
+      .row
+        .span12.center
+          %img(src="/media/partner-page/how-it-works.png")
+    %section.parallax.each-transaction(data-offset="-1000")
+      .container
+        .row
+          .span6.text
+            %h1 Only 2% off
+            %h3 each transaction!
+    %section.why-blaze.container
+      .row
+        .span6
+          %h2.orange
+            %i.icon-fire
+            Interested in partnering with Blaze?
+
+          %p.center
+            You can also submit via email to
+            %a(href="mailto:#{constants.CONTACT_EMAIL}")
+              #{constants.CONTACT_EMAIL}.
+
+          %form.send-message(action="#{uri_for('partner')}", method="POST")
+
+            .control-group
+              %label.control-label(for="owner_name") Name:
+              .controls
+                %input#partner-name.span4(type="text", name="owner_name", \
+                                          required="required")
+
+            .control-group
+              %label.control-label(for="organization_name") Organization's Name:
+              .controls
+                %input#partner-organization-name.span4(type="text", \
+                                                       name="organization_name", \
+                                                       required="required")
+
+            .control-group
+              %label.control-label(for="email") E-mail address:
+              .controls
+                %input#parter-email.span4(type="text", name="email", \
+                                          required="required")
+
+            .control-group
+              %label.control-label(for="address") Business address:
+              .controls
+                %input#partner-address.span4(type="text", name="address", \
+                                             required="required")
+
+            .control-group
+              %label.control-label(for="phone_number") Contact number:
+              .controls
+                %input#partner-number.span4(type="text", name="phone_number")
+
+            .form-actions
+              %button(type="submit", data-spinner="Sending request...")
+                %i.icon-share-alt
+                Submit your organization's request.
+        .span6
+          %img.center(src="/media/about-page/blaze-tablet-mockup.png")
+
+
+

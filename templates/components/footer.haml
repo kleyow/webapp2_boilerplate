@@ -1,0 +1,32 @@
+%footer: .container
+  .row.info
+    .span5.about-us
+      %h4 About Blaze
+      %p
+        Blaze is a startup that wants to change the way you spend money.
+        Blaze is the faster, safer and smarter way to send and recieve
+        money electronically. With Blaze, you can make purchases at
+        any of our merchant partners with just the push of a button!
+        Blaze is based in Kingston, Jamaica.
+
+    .offset2.span4.contact
+      %h4 Contact Blaze
+      %ul
+        %li Blaze Ltd.
+        %li 53 Knutsford Boulevard
+        %li Kingston 5, Jamaica
+        %li.email
+          %a(href="mailto:#{constants.CONTACT_EMAIL}")
+            #{constants.CONTACT_EMAIL}
+        %li.partner
+          %a#partner-link(href="#{uri_for('partner')}")
+            Interested in partnering with Blaze?
+
+  .row.credits
+    .span12
+      .row.copyright
+        .span12
+          &copy; 2013 Blaze Ltd.
+          &copy; JGX Labs Ltd.
+          All Rights Reserved.
+

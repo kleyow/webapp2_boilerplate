@@ -1,0 +1,57 @@
+#organization-staff-tab.tab-pane
+  .row: .span3
+    %form#add-staff(\
+        method="POST", \
+        action="#{uri_for('organization.create_staff', id=organization.key().id())}")
+
+      .control-group
+        %label.control-label(for="name") Name:
+        .controls
+          %input#name(type="text", name="name", required="required", \
+                      value="#{request.POST.get('name', '')}")
+
+      .control-group
+        %label.control-label(for="username") Username:
+        .controls
+          .input-prepend
+            %input#username(type="text", name="username", required="required", \
+                            value="#{request.POST.get('username', '')}")
+            .add-on @#{organization.identifier}
+
+        %input#organization_identifier(type="hidden", name="organization_identifier", \
+                                       value="#{organization.identifier}")
+
+      .form-actions
+        %button.btn.btn-primary(type="submit", \
+                                data-spinner="Creating staff member...")
+          %i.icon-thumbs-up
+          Add staff member
+
+  %h3 Default password for first login is their login.
+  %table.compact-table.table
+    %thead
+      %tr
+        %td Name
+        %td Login
+        %td Active
+    %tbody
+    -for staff in organization.get_staff()
+      %tr
+        %td.staff-name(data-title="Name") #{staff.name}
+        %td.staff-login(data-title="Login") #{staff.username}@#{organization.identifier}
+        %form.toggle-active(id="toggle-#{staff.username}", method="POST", \
+                            action="#{uri_for('organization.toggle_active')}"))
+
+          %input(type="hidden", name="username", required="required", \
+                          value="#{staff.username}@#{organization.identifier}")
+
+          -if staff.is_active
+            %td.toggle(data-title="Active")
+              %button.btn.btn-success(type="submit", \
+                                      data-spinner="Disabling staff member...")
+                Enabled
+          -else
+            %td.toggle(data-title="Active")
+              %button.btn.btn-danger(type="submit", \
+                                    data-spinner="Enabling staff member...")
+                Disabled

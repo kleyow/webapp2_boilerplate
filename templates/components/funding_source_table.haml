@@ -1,0 +1,33 @@
+%table.funding-sources: %tbody
+
+  -for funding_source in funding_sources
+    %tr.funding_source
+      %td.selector
+        %input(type="radio", name="funding_source", \
+               value="{{ funding_source.key() }}")
+      %td.nickname
+        {{ funding_source.nickname or '--' }}
+      %td.expiration
+        exp
+        {{ funding_source.get_expiration_date()|format_date("MMM YYYY") }}
+      %td.card-info
+        %img.card(src="/media/card-icons/visa.png")
+        \-{{ funding_source.last_four_digits }}
+      %td.delete-card
+        %form(action="#{uri_for('funding_source.delete')}", method="POST")
+          %input(type="hidden", name="funding_source", \
+                 value="#{funding_source.key()}")
+          %button.btn.btn-danger(type="submit")
+            Delete
+
+  -else
+    %tr
+      %td.empty(colspan="4")
+        %h4
+          Uh oh!
+        %h5
+          Looks like you don't have any funding sources..
+        %a(data-modal="funding_source_create")
+          %i.icon-plus
+          Add one now!
+

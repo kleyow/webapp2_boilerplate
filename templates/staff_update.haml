@@ -1,0 +1,47 @@
+-extends "private_base.haml"
+
+-if not current_staff.is_activated()
+  -set title="Complete signup."
+-else
+  -set title="Change password/PIN."
+-block content
+  #staff-update.container
+    .row
+      .offset4.span4
+        -if not current_staff.is_activated()
+          %h2.orange
+            %i.icon-fire
+            Please finish your signup.
+        -else
+          %h2.orange
+            %i.icon-fire
+            Change password/PIN.
+
+        %form#staff-update-form(action="#{uri_for('staff.update')}", method="POST")
+
+          %h3
+            #{current_staff.name}
+
+          .control-group
+            %label.control-label(for="password") Password:
+            .controls
+              %input#password(type="password", name="password", required="required", \
+                              data-error="#{form.errors.get('password', '')}", \
+                              autocomplete="off")
+
+          .control-group
+            %label.control-label(for="pin") Choose a 4-digit PIN:
+            .controls
+              %input#pin(type="password", name="pin", required="required", \
+                         data-error="#{form.errors.get('pin', '')}", maxlength="4", \
+                         autocomplete="off")
+
+          .form-actions
+            -if not current_staff.is_activated()
+              %button(type="submit", data-spinner="Finishing up...")
+                %i.icon-thumbs-up
+                Complete signup!
+            -else
+              %button(type="submit", data-spinner="Finishing up...")
+                  %i.icon-thumbs-up
+                  Update

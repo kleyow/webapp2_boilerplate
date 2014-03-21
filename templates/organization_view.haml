@@ -1,0 +1,43 @@
+-extends "private_base.haml"
+
+-set title = organization.name
+
+-block content
+  #organization-view: .container
+
+    .organization-section.row
+      .span4
+        %h2 #{organization.name}
+        -include "components/organization_info.haml"
+
+        -if organization.is_editable_by(current_staff)
+        %a.edit-button(href="#{uri_for('organization.edit', id=organization.key().id())}")
+          %i.icon-edit Edit #{organization.name}
+
+      -set fee_percentage = organization.get_fee_percentage()
+      -set usd_fee = fee_percentage * organization.usd_balance
+      -set jmd_fee = fee_percentage * organization.jmd_balance
+      -set actual_usd_balance = organization.usd_balance - usd_fee
+      -set actual_jmd_balance = organization.jmd_balance - jmd_fee
+
+      .span8.organization-content
+        .tabbable
+          %ul.nav.nav-tabs
+            %li.active
+              %a(href="#organization-balance-tab", data-toggle="tab")
+                Balances
+            %li
+              %a(href="#organization-fee-tab", data-toggle="tab")
+                Fees
+            %li
+              %a(href="#organization-transaction-tab", data-toggle="tab")
+                Transactions
+            %li
+              %a(href="#organization-staff-tab", data-toggle="tab")
+                Staff
+
+          .tab-content
+            -include "components/organization_balances_tab.haml"
+            -include "components/organization_fee_tab.haml"
+            -include "components/organization_transactions_tab.haml"
+            -include "components/organization_staff_tab.haml"

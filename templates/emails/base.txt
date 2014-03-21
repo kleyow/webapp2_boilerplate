@@ -1,0 +1,7 @@
+{% block content %}{% endblock %}
+
+Sincerely,
+
+The Blaze Team
+{{ constants.PUBLIC_HOST }}
+

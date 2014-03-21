@@ -1,0 +1,44 @@
+#organization-transaction-tab.tab-pane: .transaction-section
+  -set transactions = organization.transactions_received
+  -if transactions.count(limit=1)
+      %h4 Recent Transactions
+      %table.compact-table.table
+        %thead
+          %tr
+            %td.status Status
+            %td Sender
+            %td Date
+            %td Amount
+            %td Processing Fees
+            %td Total
+            %td Currency
+            %td Server
+            %td Tip
+
+        %tbody
+          -for transaction in transactions.order('-created')
+            %tr(class="#{transaction.status}")
+              %td.status(data-title="Status")
+                %a(href="#{uri_for('transaction.verify', uuid=transaction.uuid)}")
+                  #{transaction.status}
+              %td(data-title="Sender name")
+                #{transaction.sender.name}
+              %td(data-title="Date")
+                #{transaction.created|format_datetime()}
+              %td(data-title="Amount")
+                $#{"%.2f"|format(transaction.amount / 100)}
+              %td(data-title="Processing Fees")
+                $#{"%.2f"|format(transaction.fees / 100)}
+              %td(data-title="Total")
+                -set total = transaction.amount+transaction.tip_amount
+                $#{"%.2f"|format(total / 100)}
+              %td.currency(data-title="Currency")
+                #{transaction.currency}
+              %td(data-title="Verifier")
+                #{transaction.verifier.name or '-'}
+              %td(data-title="Tip")
+                $#{'%.2f'|format(transaction.tip_amount/100)}
+
+  -else
+    .empty
+      %h3.center No Transactions Received.

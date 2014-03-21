@@ -1,0 +1,177 @@
+#login {
+
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+  @media(@mobile) {
+    margin-top: 1em;
+  } // @media(@mobile)
+
+  h4 {
+    margin: 20px 0 40px 0;
+    line-height: 43px;
+    font-size: 35px;
+    font-weight: 300;
+
+    @media(@mobile) {
+      text-align: center;
+    } // @media(@mobile)
+  } // h4
+
+  .features {
+    color: #252527;
+    padding-right: 4em;
+
+    // Hide these on the mobile version.
+    @media(@mobile) {
+      display: none;
+    } // @media(@mobile)
+
+    > div {
+      float: left;
+      width: 100%;
+
+      .feature {
+        width: 100%;
+        color: @white;
+        margin-bottom: 31px;
+
+        i {
+          float: left;
+          margin-right: 8px;
+          margin-top: 5px;
+          color: @white;
+          font-size: 20px;
+        } // i
+
+        p {
+          font-size: 15px;
+          padding-left: 30px;
+          text-align: justify;
+
+          strong {
+            color: @white;
+          } //  strong
+
+        } // p
+
+      } // .feature
+
+    } // > div
+
+  } // .features
+
+  .login-box {
+    color: @blazeGray;
+    background: @white;
+    border: 1px solid #DFDFDF;
+    padding: 35px 30px 30px;
+    .box-sizing(border-box);
+    .box-shadow(0 0 5px 0 rgb(238, 238, 238));
+    .border-radius(5px);
+
+    h4 {
+      color: @blazeGray;
+    }
+
+    margin-top: 3em;
+    @media(@mobile) {
+      margin-top: 1em;
+    } // @media(@mobile)
+
+    .login-error {
+      .alert;
+      .alert-error;
+    } // .login-error
+
+    form {
+      margin: 0;
+      text-align: center;
+
+      input {
+        border-radius: 3px;
+        font-size: 16px;
+        width: 96%;
+        margin-bottom: 16px;
+        height: 27px;
+        color: black;
+      } // input
+
+      #keypad {
+        @buttonSize: 50px;
+        @buttonSpacing: 5px;
+        width: 270px;
+        margin: 0.5em auto;
+
+        .button {
+          .btn;
+          .btn-inverse;
+          font-weight: bold;
+          font-size: 22px;
+          display: inline-block;
+          width: @buttonSize;
+          height: @buttonSize;
+          line-height: @buttonSize;
+          margin-bottom: @buttonSpacing;
+          margin-right: @buttonSpacing;
+        } // button
+
+        input.digit {
+          width: @buttonSize*4/4;
+          height: @buttonSize*3/3;
+          display: inline-block;
+          font-weight: bold;
+          font-size: 40px;
+          text-align: center;
+        } // input
+
+      } // #keypad
+
+      .forgot-password-link {
+        color: #797979;
+      } // .forgot-password-link
+
+      .staff-login-link {
+        margin-bottom: 16px;
+      } // .staff-login-link
+
+      button.login {
+        .btn;
+        .btn-large;
+        .btn-primary;
+        color: #fff;
+        background: #187CCC;
+        font-size: 15px;
+        margin: 0 auto;
+        display: inline-block;
+        padding: 6px 19px;
+        border: 0 none;
+        .border-radius(3px);
+        .transition(~"background linear .2s, box-shadow linear .2s");
+
+        &:hover {
+          background: #252528;
+        } // &:hover
+
+      } // .btn
+
+    } // form
+
+  } // .login-box
+
+} // .login
+
+.xlogin-error {
+  position: absolute;
+  left: 50%;
+
+  div {
+    .alert;
+    .alert-error;
+
+    margin-top: 2em;
+    position: relative;
+    left: -50%;
+  } // div
+
+} // .login-error

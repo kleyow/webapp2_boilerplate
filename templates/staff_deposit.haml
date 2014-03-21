@@ -1,0 +1,52 @@
+-extends "private_base.haml"
+
+-set organization = current_staff.get_organization()
+-set title = "Sell credit from " ~ organization.name
+
+-block content
+
+  #staff-deposit.container
+
+    .row: .span10
+      %h2.center #{title}
+
+    .row: .span10
+      %form#deposit-form.center(action="#{uri_for('staff.deposit')}", \
+                                method="POST")
+        .control-group
+          %label.control-label(for="recipient") Recipient's email address:
+          .controls
+            %input#recipient(type="email", name="recipient", \
+                             value="#{request.POST.get('recipient', '')}")
+
+          %label.control-label(for="amount") Amount
+          .controls
+            %input#amount.input-small(type="number", name="amount", \
+                                      step="0.01", autocomplete="off", \
+                                      placeholder="$0.00", \
+                                      value="#{request.POST.get('amount', '')}")
+
+          %label.control-label(for="currency") Currency
+          .controls
+            %select#currency(name="currency")
+              -for currency in constants.CURRENCIES
+                -if currency == request.POST.get('currency', '')
+                  %option(value="#{currency}", selected="selected")
+                    #{currency.upper()}
+                -else
+                  %option(value="#{currency}")
+                    #{currency.upper()}
+
+          %label.control-label(for="pin") PIN:
+          .controls
+            %input#pin.input-small(type="password", name="pin", \
+                                   maxlength="4", autocomplete="off")
+
+        .form-actions
+          %button.btn.btn-large.btn-success(type="submit")
+            %i.icon-check
+            Sell Credit
+
+          %a.btn.btn-large.btn-danger(href="#{uri_for('staff.home')}")
+            %i.icon-signout
+            Back to Staff Home
